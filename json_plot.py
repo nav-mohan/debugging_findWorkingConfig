@@ -193,37 +193,38 @@ def plot_file_record(file_record, output_dir):
             )
 
         # Vertical line at equilibrium alat
-        ax.axvline(
-            spec_equil_alat,
-            color="black",
-            linestyle="--",
-            linewidth=1.2,
-            label="spec_equil_alat",
-        )
+        if spec_equil_alat != -1:
+            ax.axvline(
+                spec_equil_alat,
+                color="black",
+                linestyle="--",
+                linewidth=1.2,
+                label="spec_equil_alat",
+            )
 
-        # Textbox: per-spec difference
-        spec_diff = spec_equil_alat - spec_good_alat
-        textbox = (
-            f"equil - good = {spec_diff:.6g}\n"
-            f"equil = {spec_equil_alat:.6g}\n"
-            f"good = {spec_good_alat:.6g}"
-        )
+            # Textbox: per-spec difference
+            spec_diff = 100*(1 - spec_good_alat/spec_equil_alat)
+            textbox = (
+                f"error = {spec_diff:.2g}%\n"
+                f"equil = {spec_equil_alat:.4g}\n"
+                f"good  = {spec_good_alat:.4g}"
+            )
 
-        ax.text(
-            0.03,
-            0.97,
-            textbox,
-            transform=ax.transAxes,
-            va="top",
-            ha="left",
-            fontsize=9,
-            bbox={
-                "boxstyle": "round",
-                "facecolor": "white",
-                "edgecolor": "gray",
-                "alpha": 0.85,
-            },
-        )
+            ax.text(
+                0.03,
+                0.97,
+                textbox,
+                transform=ax.transAxes,
+                va="top",
+                ha="left",
+                fontsize=9,
+                bbox={
+                    "boxstyle": "round",
+                    "facecolor": "white",
+                    "edgecolor": "gray",
+                    "alpha": 0.85,
+                },
+            )
 
         ax.set_title(str(spec_name))
         ax.set_xlabel("spec_valid_alats")
@@ -237,13 +238,13 @@ def plot_file_record(file_record, output_dir):
 
     avg_equil_alat = file_record["avg_equil_alat"]
     avg_good_alat = file_record["avg_good_alat"]
-    avg_diff = avg_equil_alat - avg_good_alat
+    avg_diff = 100*(1 - avg_good_alat/avg_equil_alat)
 
     fig.suptitle(
         (
             f"{path.name}\n"
-            f"avg_equil_alat - avg_good_alat = {avg_diff:.6g} "
-            f"({avg_equil_alat:.6g} - {avg_good_alat:.6g})"
+            f"avg_equil_alat - avg_good_alat = {avg_diff:.2g} "
+            f"({avg_equil_alat:.4g} - {avg_good_alat:.4g})"
         ),
         fontsize=14,
     )

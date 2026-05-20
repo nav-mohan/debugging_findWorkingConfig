@@ -14,6 +14,8 @@ from ase.data import chemical_symbols
 from ase.lattice.cubic import FaceCenteredCubic
 
 ################################################################################
+# this is only for monospecies
+# species will be turned into a string, not a list
 def generate_fcc_compute_energy(
     model: Union[str, Calculator],
     species: list,
@@ -197,10 +199,10 @@ def filter_good_alat(
         led = leds[i - 2]  # leds[0] corresponds to alats[2]
         natoms = fcc_atoms_in_supercell(ncell)
 
-        r_nn = alat / np.sqrt(2)
-        if min_cutoff is not None and r_nn > 1.8 * min_cutoff:
+        # r_nn = alat / np.sqrt(2)
+        # if min_cutoff is not None and r_nn > 1.8 * min_cutoff:
             # print(f"r_nn = {r_nn} SKIPPING 1.2")
-            continue
+            # continue
         if abs(energy) > etol[1] * natoms or abs(energy) < etol[0] * natoms:
             # print(f"r_nn = {r_nn} SKIPPING ENERGY")
             continue
@@ -241,11 +243,10 @@ def filter_good_alat(
     indices = indices.tolist()
     
     # if there are more than one peak, pick the lowest energy 
-    min_index = -1
-    if len(indices) > 0:
-        for i in indices:
-            if valid_energy[i] < valid_energy[min_index]:
-                min_index = i
+    if len(indices) == 0:
+        min_index = int(np.argmin(valid_energy))
+    else:
+        min_index = min(indices, key=lambda i: valid_energy[i])
 
     good_alat = valid_alats[min_index] 
     min_led = valid_leds[min_index] 
@@ -264,6 +265,9 @@ def filter_good_alat(
 
 
 ################################################################################
+
+# this is only for mono-species. 
+# species will be turned into a string, not a list 
 def find_working_configuration_FCC(
     model: Union[str, Calculator],
     species: list,
@@ -316,9 +320,13 @@ def find_working_configuration_FCC(
     # this amin is set to prevent segfaults . For example large Plutonium atom in a SIM_LAMMPS models throws a segfault that cannot be recovered from. 
     # but if energy-minima is < 2.5 then we will miss that. in that case what will likely happen is that we will exhaust the search range and the energy minima will be somewhere near amax
     # if we exhaust this search-range then redo the search-range but with amin = 1.5, amax = 3.0
-    amin = 2.5 
-    amax = 12.0
 
+    from ase.data import atomic_numbers, covalent_radii
+    # species is just a list of length 1 
+    cov = covalent_radii[atomic_numbers[species[0]]]
+    amin = max(np.sqrt(2) * cov , 1.5) # strict lower bound of 1.5 to avoid high-density
+    # amin = 2.5 
+    amax = 12.0
     del_a = 0.01
     na = int(math.ceil((amax - amin) / del_a))
 

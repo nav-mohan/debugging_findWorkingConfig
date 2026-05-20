@@ -12,11 +12,23 @@ import scipy.optimize
 
 from fwc import *
 
-from input_data import input_data
-import sys
-sys.path.append('/h/mohan227/allegro-issues/')
-from simplelogger import SimpleLogger
-from simplecsv import SimpleCSV
+######################################################################################################
+# choose which input_data to import, whether PORTABLE-MODEL, SIM_MODEL or TORCH_MODEL
+import argparse
+import importlib
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--input-module", required=True)
+args = parser.parse_args()
+
+input_module = importlib.import_module(args.input_module)
+input_data = input_module.input_data
+
+# to choose which type of models to run, execute script.py like so
+# python script.py --input-module input_data_TORCH
+# python script.py --input-module input_data_PORT
+# python script.py --input-module input_data_SIM
+######################################################################################################
 
 def cubic_cell_energy(alat, atoms, ncells_per_side):
     """
@@ -99,14 +111,13 @@ for data in input_data:
     print(model_shortname)
     data = []
     results = []
+    avg_equil_alat = []
+    avg_good_alat = []
     for spec in species:
         print(f"\tSPEC: {spec}")
-        avg_equil_alat = []
-        avg_good_alat = []
         spec_equil_alat = -1.0
-        # spec_equil_alat = find_equilibrium_fcc(model,[spec]) # comment out for ML models
+        spec_equil_alat = find_equilibrium_fcc(model,[spec]) # comment out for ML models
         spec_work_config = find_working_configuration_FCC(model=model,species=[spec])
-
 
         spec_good_alat = spec_work_config['good_alat'] # use this for calculating difference between spec_equil_alat
         spec_valid_alats = spec_work_config['valid_alats']
@@ -117,7 +128,7 @@ for data in input_data:
         if len(spec_valid_alats) == 0:
             print("FAILED TO FIND A SINGLE VALID",model)
             with open("notes.txt", "a") as file:
-                file.write(f"\t{model} {equil_alat} [{alats[0]},{alats[-1]}]\n")
+                file.write(f"\t{model} {spec_equil_alat}\n")
 
 
         results.append(
@@ -155,19 +166,7 @@ for data in input_data:
 
     # write data to file {model}.json
     # make subplots for each spec
-    with open(f"plotdata/{model}.json", "w") as file:
+    with open(f"plotdata/{model}_{'-'.join(species)}.json", "w") as file:
         json.dump(data, file, indent=4)
 
 
-# just show each monospecies energy vs alat curve, 
-    # highlight the spec_equil_alat for each species 
-    # highlight the avg_equil_alat 
-    # highlight the spec_good_alat for each species 
-    # highlight the avg_good_alat
-
-
-
-
-# find_equil_alat should be able to vary 
-    # ncells_per_side
-    # grid_stepsize 

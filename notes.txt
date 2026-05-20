@@ -1,0 +1,75 @@
+# improving the find-working-config method 
+
+# problem with my earlier implementation of find_working_config
+        i was over-emphasizing the LED
+        i was ignoreing the energy minimum even if that information was available
+        so i gather all the points where LED is satisfied and then pick minimum energy.
+        i think my approach is more corect even if it differs from the equil lattice
+        based on the plots i'm seeing, i think this approach is more correct.
+        i should also plot the equilibrium_alat in the same plot to see how far apart they are
+
+
+# next steps 
+        SIM models that caued the FND-VC to fail
+        Sim_LAMMPS_AIREBO_Morse_OConnorAndzelmRobbins_2015_CH__SM_460187474631_000
+
+# Match the earlier nelder-mead optimization 
+	use periodidc bc 
+	use ncells_per_side = 1
+	use the similar search range [2.5,12.0]. nelder-mead uses [2.5,10.0]. dont bother using min-cutoff. nelder-mead does not use anythign like that
+	do mono-species only and then assume avg of mono-species is good-eneough for multi-species 
+	some models hit segfaults if you try to evaluate energy for multispecies directly 
+		because our search range might be unphysical for multispecies. 
+		but our search range seems to be fine for monospecies 
+
+# next next steps 
+        Torch models
+        MACE models
+
+
+# Buckingham Problems 
+	Sim_LAMMPS_Buckingham_ArimaYoshidaMatsumoto_2014_PuUThNpO__SM_182981756100_000
+	Sim_LAMMPS_Buckingham_FreitasSantosColaco_2015_SiCaOAl__SM_154093256665_000
+	Sim_LAMMPS_Buckingham_MatsuiAkaogi_1991_TiO__SM_690504433912_000 - this has equil_alat for periodic but throws segfault for find_working_config
+	maybe i should run find_working_config on each atom individually and then average them because thats what FND's equilibration step does 
+		it doesnt equlibrate a mixed structure directly
+		it equilibrates monospecies FCC and then assumes the average of those monospecies equil_alats is good enough for mixedspecies equil_alt
+
+!!!! FOR MULTISPECIES MODELS IT'S OK IF YOU CANT FIND A LATTICE-CONSTANT FOR SOME OF THEIR MONOSPECIES FCCs !!!!
+	but try-catch blocks wont protext against segfaults from lammps 
+	lammps throws segfaults usually when the lattice-constant is too small for example using alat=2.0 for plutonium will throw segault
+	would be nice if there was a lookup table for atomic-radii so we can atleast estimate a good lower bound
+
+must remake the plots. 
+	show the mono-species energy-alat curves with the corresponding equil-alat 
+	show the multispecies energy-alat curves with the corresponding avg_equil_alat
+		the multispecies energy-alat curve will be constructed using the avg_find_working_config
+		ACTUALLY DONT DO THIS BECAUSE THERE IS NO GUARANTEE THAT THIS WILL NOT THROW A SEGFAULT 
+
+
+# models that failed to find even a single VALID 
+	must investigate why these failed. they most likely failed the r_nn check 
+	MODEL_NAME 					 				EQUIL_ALAT	   	FIND_WORKING_CONFIG's SEARCH_RANGE
+	LJ_Truncated_Nguyen_2005_Ar__MO_398194508715_001 				5.246870040893555 	[6.491240252335648,21.64124025233565]
+	Sim_LAMMPS_AIREBO_LJ_StuartTuteinHarrison_2000_CH__SM_069621990420_000 		1.1142749786376953 	[3.3728965100719543,11.252896510071954]
+	Sim_LAMMPS_AIREBO_Morse_OConnorAndzelmRobbins_2015_CH__SM_460187474631_000 	1.114330768585205 	[3.3728878509176354,11.252887850917634]
+
+
+
+## Remember to 
+	- make species a string not a list in find_working_config 
+	- make species a string not a list in generate_fcc_compute_energy 
+
+
+## how to do adaptive search
+	if you pick the left-most i.e min_index < 4 
+		and if there are no further local minimas 
+			then expand the search further left 
+		and there are other local minimas 
+			then pick the first local minima to the right 
+
+	if you pick the right most i.e min_index > len(valid_alats)-4
+		and if there are no furthe local minimas 
+			then ignore this species. this case is unlikely because we are searching all the way to 12 angstronms
+		and if there are other local minimas 
+			then pick the first local minima to the left 
