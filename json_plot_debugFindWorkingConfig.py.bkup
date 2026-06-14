@@ -1,0 +1,420 @@
+#!/usr/bin/env python3
+
+
+from pathlib import Path
+import json
+import math
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+PLOTDATA_DIR = Path("plotdata_multires")
+OUTPUT_DIR = Path("plots")
+
+def finite_difference_curvature(alats, energies, i):
+    """
+    Estimate local curvature d²E/da² at index i.
+
+    energies should be energy-per-atom, not total energy.
+    """
+
+    if i <= 0 or i >= len(energies) - 1:
+        return None
+
+    h_left = alats[i] - alats[i - 1]
+    h_right = alats[i + 1] - alats[i]
+
+    if not np.isclose(h_left, h_right):
+        raise ValueError("This simple formula assumes uniform spacing.")
+
+    h = h_left
+
+    return (
+        energies[i - 1]
+        - 2.0 * energies[i]
+        + energies[i + 1]
+    ) / h**2
+
+# NOT USING THIS FOR NOW
+def basin_depth(alats, energies_per_atom, min_index, shoulder=10):
+    """
+    Estimate how deep the basin is relative to points on the left and right.
+
+    shoulder=10 means compare against points 10 scan steps away.
+    """
+
+    n = len(energies_per_atom)
+
+    i_left = max(0, min_index - shoulder)
+    i_right = min(n - 1, min_index + shoulder)
+
+    e_min = energies_per_atom[min_index]
+    e_left = energies_per_atom[i_left]
+    e_right = energies_per_atom[i_right]
+
+    depth_left = e_left - e_min
+    depth_right = e_right - e_min
+
+    return {
+        "depth_left": depth_left,
+        "depth_right": depth_right,
+        "depth_min": min(depth_left, depth_right),
+        "depth_avg": 0.5 * (depth_left + depth_right),
+    }
+
+# NOT USING THIS FOR NOW
+def parabolic_minimum_quality(
+    alats,
+    energies_per_atom,
+    min_index,
+    window=5,
+):
+    """
+    Measure the quality/strength of a local minimum by fitting a parabola.
+
+    Returns:
+        dict with curvature, fitted minimum location, fitted minimum energy,
+        and a simple R² score for how bowl-like the local curve is.
+    """
+
+    alats = np.asarray(alats, dtype=float)
+    energies_per_atom = np.asarray(energies_per_atom, dtype=float)
+
+    n = len(alats)
+
+    half = window // 2
+    lo = max(0, min_index - half)
+    hi = min(n, min_index + half + 1)
+
+    # Need at least 3 points to fit a parabola
+    if hi - lo < 3:
+        return {
+            "ok": False,
+            "reason": "not enough points",
+            "curvature": None,
+            "a_star": None,
+            "e_star": None,
+            "r2": None,
+        }
+
+    x = alats[lo:hi]
+    y = energies_per_atom[lo:hi]
+
+    if not np.all(np.isfinite(y)):
+        return {
+            "ok": False,
+            "reason": "non-finite energy values",
+            "curvature": None,
+            "a_star": None,
+            "e_star": None,
+            "r2": None,
+        }
+
+    # Fit E(a) = c2 a^2 + c1 a + c0
+    c2, c1, c0 = np.polyfit(x, y, deg=2)
+
+    curvature = 2.0 * c2
+
+    if curvature <= 0:
+        return {
+            "ok": False,
+            "reason": "negative or zero curvature",
+            "curvature": curvature,
+            "a_star": None,
+            "e_star": None,
+            "r2": None,
+        }
+
+    # Location of fitted parabola minimum
+    a_star = -c1 / (2.0 * c2)
+    e_star = c2 * a_star**2 + c1 * a_star + c0
+
+    # R² goodness of fit
+    y_fit = c2 * x**2 + c1 * x + c0
+    ss_res = np.sum((y - y_fit)**2)
+    ss_tot = np.sum((y - np.mean(y))**2)
+
+    if ss_tot > 0:
+        r2 = 1.0 - ss_res / ss_tot
+    else:
+        r2 = 1.0
+
+    return {
+        "ok": True,
+        "curvature": curvature,
+        "a_star": a_star,
+        "e_star": e_star,
+        "r2": r2,
+        "fit_window": [int(lo), int(hi)],
+    }
+
+
+
+
+def unwrap_file_root(data, path):
+    """
+    Your files have structure:
+
+        [
+            {
+                "avg_equil_alat": ...,
+                "avg_good_alat": ...,
+                "results": [...]
+            }
+        ]
+
+    This function also tolerates the case where the root is already that dict.
+    """
+    if isinstance(data, list):
+        if len(data) != 1:
+            raise ValueError(
+                f"{path.name}: expected root list of length 1, got length {len(data)}"
+            )
+
+        if not isinstance(data[0], dict):
+            raise ValueError(f"{path.name}: root list item is not a dictionary")
+
+        return data[0]
+
+    if isinstance(data, dict):
+        return data
+
+    raise ValueError(f"{path.name}: JSON root must be a list or dictionary")
+
+
+def load_one_file(path):
+    with open(path, "r") as f:
+        data = json.load(f)
+
+    root = unwrap_file_root(data, path)
+
+    required_file_keys = ["avg_equil_alat", "avg_good_alat", "results"]
+    missing = [key for key in required_file_keys if key not in root]
+    if missing:
+        raise KeyError(f"{path.name}: missing file-level keys {missing}")
+
+    if not isinstance(root["results"], list):
+        raise TypeError(f"{path.name}: expected 'results' to be a list")
+
+    return {
+        "path": path,
+        "avg_equil_alat": float(root["avg_equil_alat"]),
+        "avg_good_alat": float(root["avg_good_alat"]),
+        "results": root["results"],
+    }
+
+
+def load_all_files(folder):
+    json_files = sorted(folder.glob("*.json"))
+
+    if not json_files:
+        raise FileNotFoundError(f"No JSON files found in {folder.resolve()}")
+
+    file_records = []
+    for path in json_files:
+        file_records.append(load_one_file(path))
+
+    return file_records
+
+
+def validate_spec(spec, path):
+    required_spec_keys = [
+        "spec",
+        "spec_equil_alat",
+        "spec_good_alat",
+        "spec_valid_alats",
+        "spec_valid_energy_per_atom",
+        "spec_min_indices",
+        "spec_min_index",
+        "spec_all_alats",
+        "spec_all_energies_per_atom",
+    ]
+
+    missing = [key for key in required_spec_keys if key not in spec]
+    if missing:
+        raise KeyError(f"{path.name}, spec={spec.get('spec', '<unknown>')}: missing {missing}")
+
+    if len(spec["spec_valid_alats"]) != len(spec["spec_valid_energy_per_atom"]):
+        raise ValueError(
+            f"{path.name}, spec={spec['spec']}: "
+            f"len(spec_valid_alats)={len(spec['spec_valid_alats'])} but "
+            f"len(spec_valid_energy_per_atom)={len(spec['spec_valid_energy_per_atom'])}"
+        )
+    
+    if len(spec["spec_all_alats"]) != len(spec["spec_all_energies_per_atom"]):
+        raise ValueError(
+            f"{path.name}, spec={spec['spec']}: "
+            f"len(spec_all_alats)={len(spec['spec_all_alats'])} but "
+            f"len(spec_all_energies_per_atom)={len(spec['spec_all_energies_per_atom'])}"
+        )
+
+
+def choose_subplot_grid(n):
+    ncols = math.ceil(math.sqrt(n))
+    nrows = math.ceil(n / ncols)
+    return nrows, ncols
+
+
+def safe_indices(indices, n):
+    good = []
+
+    for idx in indices:
+        if isinstance(idx, int) and 0 <= idx < n:
+            good.append(idx)
+        else:
+            print(f"Warning: skipping invalid index {idx}; valid range is [0, {n - 1}]")
+
+    return good
+
+
+def plot_file_record(file_record, output_dir):
+    path = file_record["path"]
+    specs = file_record["results"]
+
+    if not specs:
+        print(f"Skipping {path.name}: no specs in results")
+        return
+
+    for spec in specs:
+        validate_spec(spec, path)
+
+    nplots = len(specs)
+    nrows, ncols = choose_subplot_grid(nplots)
+
+    fig, axes = plt.subplots(
+        nrows,
+        ncols,
+        figsize=(8 * ncols, 6 * nrows),
+        squeeze=False,
+    )
+
+    axes_flat = axes.ravel()
+
+    for ax, spec in zip(axes_flat, specs):
+        spec_name = spec["spec"]
+
+        all_alats = np.asarray(spec["spec_all_alats"], dtype=float)
+        all_energy_per_atom = np.asarray(spec["spec_all_energies_per_atom"], dtype=float)
+
+        valid_alats = np.asarray(spec["spec_valid_alats"], dtype=float)
+        valid_energy_per_atom = np.asarray(spec["spec_valid_energy_per_atom"], dtype=float)
+
+        spec_equil_alat = float(spec["spec_equil_alat"])
+        spec_good_alat = float(spec["spec_good_alat"])
+
+        spec_min_indices = safe_indices(spec["spec_min_indices"], len(valid_alats))
+        spec_min_index = spec["spec_min_index"]
+
+        # Main energy curve
+        ax.plot(valid_alats,valid_energy_per_atom,marker=".",linestyle="-",linewidth=0.0,markersize=5,label="valid energy per atom",)
+        ax.plot(all_alats,all_energy_per_atom,linewidth=1.0,alpha=1,label='all energy per atom')
+
+        # Green points: all local/good candidate minima
+        if spec_min_indices:
+            ax.scatter(valid_alats[spec_min_indices],valid_energy_per_atom[spec_min_indices],color="green",s=30,zorder=4,alpha=0.5,label="spec_min_indices",)
+
+        # Red point: selected minimum
+        if isinstance(spec_min_index, int) and 0 <= spec_min_index < len(valid_alats):
+            ax.scatter(valid_alats[spec_min_index],valid_energy_per_atom[spec_min_index],color="red",s=30,zorder=5,alpha=0.5,label="spec_min_index",)
+        else:
+            print(
+                f"Warning: {path.name}, spec={spec_name}: "
+                f"invalid spec_min_index={spec_min_index}"
+            )
+
+        # label the parabola-fit curvature of each minima
+        # if len(spec_min_indices) > 1:
+        #     for smi in spec_min_indices:
+        #         parabola_quality = parabolic_minimum_quality(valid_alats,valid_energy_per_atom,smi,window=5)
+        #         r2 = parabola_quality["r2"]
+        #         a_star = parabola_quality["a_star"]
+        #         e_star = parabola_quality["e_star"]
+        #         if r2 != None:
+        #             ax.scatter(a_star,e_star,color='black',s=30,marker='d',alpha=0.6)
+                    # ax.text(valid_alats[smi]+0.1,valid_energy_per_atom[smi]+0.1,f"{r2:.3f}")
+                    # ax.text(a_star+0.1,e_star+0.1,f"{r2:.3f}")
+
+        if len(spec_min_indices) > 1:
+            for smi in spec_min_indices:
+                ai = np.where(all_alats == valid_alats[smi])[0]
+                ei = np.where(all_energy_per_atom == valid_energy_per_atom[smi])[0]
+                if ai != ei: print("ERROR NOT EQUAL",ai,ei)
+                fdc = finite_difference_curvature(all_alats,all_energy_per_atom,ai)[0]
+                print(fdc)
+                ax.text(
+                    valid_alats[smi],
+                    0.8*valid_energy_per_atom[smi],
+                    f"{fdc:.3f}",fontsize=9)
+                
+
+        # Vertical line at equilibrium alat
+        if spec_equil_alat != -1:
+            ax.axvline(spec_equil_alat,color="black",linestyle="--",linewidth=1.2,label="spec_equil_alat",)
+
+            # Textbox: per-spec difference
+            spec_diff = 100*(1 - spec_good_alat/spec_equil_alat)
+            textbox = (
+                f"error = {spec_diff:.2g}%\n"
+                f"equil = {spec_equil_alat:.4g}\n"
+                f"good  = {spec_good_alat:.4g}"
+            )
+
+            ax.text(0.03,0.97,textbox,transform=ax.transAxes,va="top",ha="left",fontsize=9,bbox={"boxstyle": "round","facecolor": "white","edgecolor": "gray","alpha": 0.85,},)
+
+        ax.set_title(str(spec_name))
+        ax.set_xlabel("spec_valid_alats")
+        ax.set_ylabel("spec_valid_energy_per_atom")
+        ax.grid(True, alpha=0.3)
+        ax.legend(fontsize=8)
+
+    # Hide unused axes
+    for ax in axes_flat[nplots:]:
+        ax.set_visible(False)
+
+    avg_equil_alat = file_record["avg_equil_alat"]
+    avg_good_alat = file_record["avg_good_alat"]
+    avg_diff = 100*(1 - avg_good_alat/avg_equil_alat)
+
+    fig.suptitle(
+        (
+            f"{path.name}\n"
+            f"avg_equil_alat - avg_good_alat = {avg_diff:.2g} "
+            f"({avg_equil_alat:.4g} - {avg_good_alat:.4g})"
+        ),
+        fontsize=14,
+    )
+
+    fig.tight_layout(rect=[0, 0, 1, 0.92])
+
+#    output_dir.mkdir(parents=True, exist_ok=True)
+#    output_path = output_dir / f"{path.stem}_spec_energy.png"
+#    fig.savefig(output_path, dpi=300)
+#    print(f"Saved {output_path}")
+#    plt.close(fig)
+
+# Set the window manager title
+    plt.gcf().canvas.manager.set_window_title(f"{path.stem}_spec_energy")
+
+    plt.show()
+
+
+def main():
+    file_records = load_all_files(PLOTDATA_DIR)
+
+
+    for file_record in file_records:
+        plot_file_record(file_record, OUTPUT_DIR)
+
+
+#    for file_record in file_records:
+#       if file_record['path'].name[:8] == "TorchML_":
+#           plot_file_record(file_record, OUTPUT_DIR)
+
+    # for file_record in file_records:
+    #    if file_record['path'].name[:10] == "Sim_LAMMPS":
+    #        print(file_record['path'].name)
+    #        plot_file_record(file_record, OUTPUT_DIR)
+
+if __name__ == "__main__":
+    main()
+
