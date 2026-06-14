@@ -1,10 +1,10 @@
 input_data = [
-# # TERSOFF_LAMMPS MODELS
-#     {
-#         "species": ["Ga", "As"],
-#         "model": "Tersoff_LAMMPS_AlbeNordlundNord_2002_GaAs__MO_799020228312_004",
-#         "model_shortname": "Tersoff_AlbeNordlundNord"
-#     },
+# TERSOFF_LAMMPS MODELS
+    {
+        "species": ["Ga", "As"],
+        "model": "Tersoff_LAMMPS_AlbeNordlundNord_2002_GaAs__MO_799020228312_004",
+        "model_shortname": "Tersoff_AlbeNordlundNord"
+    },
 
 
 # SIM_LAMMPS MODELS 
@@ -68,8 +68,27 @@ input_data = [
         "species": ["Cr", "O"],
         "model": "Sim_LAMMPS_Buckingham_WangShinShin_2019_CrO__SM_295921111679_000",
         "model_shortname": "Buckingham_WangShinShin"
+    },
+    {
+        "species": ["Mg","H"],
+        "model" : "Sim_LAMMPS_ADP_SmirnovaStarikovVlasova_2018_MgH__SM_899925688973_000",
+        "model_shortname" : "ADP_SmirnovaStarikovVlasova",
+    },
+    {
+        "species": ["Fe"],
+        "model" : "Sim_LAMMPS_ADP_StarikovSmirnovaPradhan_2021_Fe__SM_906654900816_000",
+        "model_shortname" : "ADP_StarikovSmirnovaPradha",
+    },
+    {
+        "species": ["Cu","Ta"],
+        "model" : "Sim_LAMMPS_ADP_PunDarlingKecskes_2015_CuTa__SM_399364650444_000",
+        "model_shortname" : "ADP_PunDarlingKecskes",
+    },
+    {
+        "species": ["Al"],
+        "model":"Sim_LAMMPS_AGNI_BotuBatraChapman_2017_Al__SM_666183636896_000",
+        "model_shortname" : "AGNI_BotuBatraChapman"
     }
-
 
 ]
 
