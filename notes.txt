@@ -1,3 +1,25 @@
+# ongoing issue
+	too many minimas being detected in the far right scan. 
+		unnecessary time being spent fine-scanning the large alat regions where there is a very low possiblilty of finding a minima
+		maybe i should be more strict about the plateau detection
+		actually i dont think my plateau-detection is ever being triggered because it is being used only for the coare-scannning i.e too few points, larger variance
+		and maybe i should also insist upon a "prominence" for a peak
+	maybe i should use nelder-mead as a first-step (try-except) 
+		if it fails or timesout, then i do the FWC because nelder-mead was definitely faster
+		exectue it as a subprocess as well
+		do a corase-scan first, find possible peaks, and use those as starting points for nelder-mead. this will save you from having to do a full scan from 2.5 to 10.0 everytime
+
+# do a multiscale scan 
+scan with del_a = 0.1 
+        find minimas in this coarse sampled energy-alat curve
+scan with del_a = 0.01 around these minimas using a window-width of +- 0.5A i.e 50 new points each side (or 5 level-1 points each side) 
+        find more precise minima locaiton using this fine-sampled curve 
+scan with del_a = 0.001 around these minimas using a window-width of +- 0.05A i.e 50 points each side (or 5 level-2 points ecah side)
+        do LED algorithm (default order 5) on these fine-sampled-windows
+                if discontinuous - reject minima
+                if continuoys - pick "best" minima as minima with largest double-derivative
+
+
 # improving the find-working-config method 
 
 # problem with my earlier implementation of find_working_config
