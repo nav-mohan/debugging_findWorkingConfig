@@ -1,0 +1,3 @@
+Sim_LAMMPS_AGNI_BotuBatraChapman_2017_Al__SM_666183636896_000 Al equil=-1.0
+TorchML_Allegro_NikidisKyriakopoulosTohidKachrimanisKioseoglou_2024_HCNOS__MO_000000000000_000 O equil=-1.0
+TorchML_Allegro_NikidisKyriakopoulosTohidKachrimanisKioseoglou_2024_HCNOS__MO_000000000000_000 O equil=-1.0

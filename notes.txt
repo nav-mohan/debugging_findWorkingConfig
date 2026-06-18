@@ -1,3 +1,6 @@
+# maybe this could have all been resolved if we'd just given nelder-mead a better starting point!!
+
+
 # ongoing issue
 	too many minimas being detected in the far right scan. 
 		unnecessary time being spent fine-scanning the large alat regions where there is a very low possiblilty of finding a minima
