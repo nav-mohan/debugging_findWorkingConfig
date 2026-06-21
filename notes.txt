@@ -1,4 +1,26 @@
-# maybe this could have all been resolved if we'd just given nelder-mead a better starting point!!
+FWC with 2x2x2 mixed-species does work. And I was also able to do nelder-mead equilibration on the 2x2x2 mixed-species. that's clearly the best result because even if the monospecies looks doubtful, the minimas in the mixed-spceis look better than monospecies
+
+i think it would be a good idea to also equilibrate the  FWC for 2x2x2 mixed-species and generate the "good" mixed-species alat along with all the other mono-species alat and let the end-user decide what they want to do with the results. do they want to create monospecies fccs and mixed-fccs like forces-numerical-derivaitve-vc? or do they just want mixed-species like bechmark-vc? 
+
+reminders when coding up finally
+	- remember to call clean() at the end
+	- just return monospecies alats. the end-user must average it out. 
+		- this might change now. i'm running some tests to see if equilibrated mixed-FCC 2x2x2 looks good.
+		- the function might return monospecies and mixed-species results in which case it would also have to return NCELLS
+		- for the timebeing i'm not doing LED fallback. just checking whether smart NelderMead is good enough. 
+	- the fnction just returns alat. dont return ncells or LED. end-user can decide ncells. 
+	- give good starting points for nelder-mead  (minimas of lattice sweep)
+	- do the lattice-sweep using subprocesses 
+	- stop calling subprocesses if 10 runs are successfull 
+	- early stop on lattice-sweep if energy-platueas
+	- use minimas of lattice-sweep for nelder-mead starting point
+	- incorporate new FWC into forces-numerical-derivative-vc
+	- run FND-VC on input_data_SIM, input_data_PORT, input_data_TORCH and make sure results are as good as before
+
+QUESTION
+	If benchmark works fine for 2x2x2 TorchML then should we reconsider FWC to also be 2x2x2?
+	Shoudl we also do nelder-mead on 2x2x2 mixed-species to get "true" equilibrium of mixed-speices?
+	Should we merely return the alat or the actual atoms object itself? 
 
 
 # ongoing issue
