@@ -1,40 +1,40 @@
 # TORCH Models 
 
 ## TorchML_Allegro_NikidisKyriakopoulosTohidKachrimanisKioseoglou_2024_HCNOS__MO_000000000000_000_H-C-N-O-S_cuda
-<img src = "plots_equilibrium_config_fcc/TorchML_Allegro_NikidisKyriakopoulosTohidKachrimanisKioseoglou_2024_HCNOS__MO_000000000000_000_H-C-N-O-S_cuda_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/TorchML_Allegro_NikidisKyriakopoulosTohidKachrimanisKioseoglou_2024_HCNOS__MO_000000000000_000_H-C-N-O-S_cuda_equilibrium_curves.png" width="700">
 
 ## TorchML_MACE_BatatiaBennerChiang_2023_MP0a_medium__MO_568776921807_000_Al-Ni-Co-Fe-Cr-Mn_cuda
-<img src = "plots_equilibrium_config_fcc/TorchML_MACE_BatatiaBennerChiang_2023_MP0a_medium__MO_568776921807_000_Al-Ni-Co-Fe-Cr-Mn_cuda_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/TorchML_MACE_BatatiaBennerChiang_2023_MP0a_medium__MO_568776921807_000_Al-Ni-Co-Fe-Cr-Mn_cuda_equilibrium_curves.png" width="700">
 
 ## TorchML_NequIP_GuptaTadmorMartiniani_2024_Si__MO_196181738937_001_Si_cuda
-<img src = "plots_equilibrium_config_fcc/TorchML_NequIP_GuptaTadmorMartiniani_2024_Si__MO_196181738937_001_Si_cuda_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/TorchML_NequIP_GuptaTadmorMartiniani_2024_Si__MO_196181738937_001_Si_cuda_equilibrium_curves.png" width="700">
 
 
 # SIM LAMMPS Buckingham
 
 ## Sim_LAMMPS_Buckingham_ArimaYoshidaMatsumoto_2014_PuUThNpO__SM_182981756100_000_Pu-U-Th-Np-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_ArimaYoshidaMatsumoto_2014_PuUThNpO__SM_182981756100_000_Pu-U-Th-Np-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_ArimaYoshidaMatsumoto_2014_PuUThNpO__SM_182981756100_000_Pu-U-Th-Np-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_Buckingham_FreitasSantosColaco_2015_SiCaOAl__SM_154093256665_000_Si-Ca-O-Al_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_FreitasSantosColaco_2015_SiCaOAl__SM_154093256665_000_Si-Ca-O-Al_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_FreitasSantosColaco_2015_SiCaOAl__SM_154093256665_000_Si-Ca-O-Al_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_Buckingham_MatsuiAkaogi_1991_TiO__SM_690504433912_000_Ti-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_MatsuiAkaogi_1991_TiO__SM_690504433912_000_Ti-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_MatsuiAkaogi_1991_TiO__SM_690504433912_000_Ti-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_Buckingham_SayleCatlowMaphanga_2005_MnO__SM_757974494010_000_Mn-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_SayleCatlowMaphanga_2005_MnO__SM_757974494010_000_Mn-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_SayleCatlowMaphanga_2005_MnO__SM_757974494010_000_Mn-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_Buckingham_SunStirnerHagston_2006_AlO__SM_466046725502_000_Al-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_SunStirnerHagston_2006_AlO__SM_466046725502_000_Al-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_SunStirnerHagston_2006_AlO__SM_466046725502_000_Al-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_Buckingham_SunStirnerHagston_2006_MgO__SM_152356670345_000_Mg-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_SunStirnerHagston_2006_MgO__SM_152356670345_000_Mg-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_SunStirnerHagston_2006_MgO__SM_152356670345_000_Mg-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_Buckingham_WangShinShin_2019_CrO__SM_295921111679_000_Cr-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_Buckingham_WangShinShin_2019_CrO__SM_295921111679_000_Cr-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_Buckingham_WangShinShin_2019_CrO__SM_295921111679_000_Cr-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_ReaxFF_BroqvistKullgrenWolf_2015_CeO__SM_063950220736_000_Ce-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ReaxFF_BroqvistKullgrenWolf_2015_CeO__SM_063950220736_000_Ce-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ReaxFF_BroqvistKullgrenWolf_2015_CeO__SM_063950220736_000_Ce-O_cpu_equilibrium_curves.png" width="700">
 
 
 
@@ -42,139 +42,139 @@
 # SIM LAMMPS ReaxFF
 
 ## Sim_LAMMPS_ReaxFF_ChenowethVanDuinPersson_2008_CHOV__SM_429148913211_001_C-H-O-V_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ReaxFF_ChenowethVanDuinPersson_2008_CHOV__SM_429148913211_001_C-H-O-V_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ReaxFF_ChenowethVanDuinPersson_2008_CHOV__SM_429148913211_001_C-H-O-V_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_reaxFF_FthenakisPetsalakisTozzini_2022_CHON__SM_198543900691_000_C-H-O-N_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_reaxFF_FthenakisPetsalakisTozzini_2022_CHON__SM_198543900691_000_C-H-O-N_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_reaxFF_FthenakisPetsalakisTozzini_2022_CHON__SM_198543900691_000_C-H-O-N_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_ReaxFF_IslamOstadhosseinBorodin_2015_LiS__SM_058492438145_000_Li-S_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ReaxFF_IslamOstadhosseinBorodin_2015_LiS__SM_058492438145_000_Li-S_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ReaxFF_IslamOstadhosseinBorodin_2015_LiS__SM_058492438145_000_Li-S_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_ReaxFF_KeithFantauzziJacob_2010_AuO__SM_974345878378_001_Au-O_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ReaxFF_KeithFantauzziJacob_2010_AuO__SM_974345878378_001_Au-O_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ReaxFF_KeithFantauzziJacob_2010_AuO__SM_974345878378_001_Au-O_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_ReaxFF_SinghSrinivasanNeekAmal_2013_CFH__SM_306840588959_000_C-F-H_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ReaxFF_SinghSrinivasanNeekAmal_2013_CFH__SM_306840588959_000_C-F-H_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ReaxFF_SinghSrinivasanNeekAmal_2013_CFH__SM_306840588959_000_C-F-H_cpu_equilibrium_curves.png" width="700">
 
 # Other SIM Models 
 
 ## Sim_LAMMPS_ADP_PunDarlingKecskes_2015_CuTa__SM_399364650444_000_Cu-Ta_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ADP_PunDarlingKecskes_2015_CuTa__SM_399364650444_000_Cu-Ta_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ADP_PunDarlingKecskes_2015_CuTa__SM_399364650444_000_Cu-Ta_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_ADP_SmirnovaStarikovVlasova_2018_MgH__SM_899925688973_000_Mg-H_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ADP_SmirnovaStarikovVlasova_2018_MgH__SM_899925688973_000_Mg-H_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ADP_SmirnovaStarikovVlasova_2018_MgH__SM_899925688973_000_Mg-H_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_ADP_StarikovSmirnovaPradhan_2021_Fe__SM_906654900816_000_Fe_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_ADP_StarikovSmirnovaPradhan_2021_Fe__SM_906654900816_000_Fe_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_ADP_StarikovSmirnovaPradhan_2021_Fe__SM_906654900816_000_Fe_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_AGNI_BotuBatraChapman_2017_Al__SM_666183636896_000_Al_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_AGNI_BotuBatraChapman_2017_Al__SM_666183636896_000_Al_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_AGNI_BotuBatraChapman_2017_Al__SM_666183636896_000_Al_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_AIREBO_LJ_StuartTuteinHarrison_2000_CH__SM_069621990420_000_C-H_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_AIREBO_LJ_StuartTuteinHarrison_2000_CH__SM_069621990420_000_C-H_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_AIREBO_LJ_StuartTuteinHarrison_2000_CH__SM_069621990420_000_C-H_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_AIREBO_Morse_OConnorAndzelmRobbins_2015_CH__SM_460187474631_000_C-H_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_AIREBO_Morse_OConnorAndzelmRobbins_2015_CH__SM_460187474631_000_C-H_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_AIREBO_Morse_OConnorAndzelmRobbins_2015_CH__SM_460187474631_000_C-H_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_BOP_WardZhouWong_2013_CdZnTe__SM_010061267051_000_Cd-Zn-Te_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_BOP_WardZhouWong_2013_CdZnTe__SM_010061267051_000_Cd-Zn-Te_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_BOP_WardZhouWong_2013_CdZnTe__SM_010061267051_000_Cd-Zn-Te_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_BOP_ZhouFosterVanSwol_2014_CdTeSe__SM_567065323363_000_Cd-Te-Se_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_BOP_ZhouFosterVanSwol_2014_CdTeSe__SM_567065323363_000_Cd-Te-Se_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_BOP_ZhouFosterVanSwol_2014_CdTeSe__SM_567065323363_000_Cd-Te-Se_cpu_equilibrium_curves.png" width="700">
 
 ## Sim_LAMMPS_BOP_ZhouWardFoster_2015_CuH__SM_404135993060_000_Cu-H_cpu
-<img src = "plots_equilibrium_config_fcc/Sim_LAMMPS_BOP_ZhouWardFoster_2015_CuH__SM_404135993060_000_Cu-H_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Sim_LAMMPS_BOP_ZhouWardFoster_2015_CuH__SM_404135993060_000_Cu-H_cpu_equilibrium_curves.png" width="700">
 
 
 # Other Portable Models
 
 ## EAM_CubicNaturalSpline_ErcolessiAdams_1994_Al__MO_800509458712_003_Al_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_CubicNaturalSpline_ErcolessiAdams_1994_Al__MO_800509458712_003_Al_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_CubicNaturalSpline_ErcolessiAdams_1994_Al__MO_800509458712_003_Al_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_Dynamo_AcklandTichyVitek_1987v2_Ag__MO_055919219575_001_Ag_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_Dynamo_AcklandTichyVitek_1987v2_Ag__MO_055919219575_001_Ag_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_Dynamo_AcklandTichyVitek_1987v2_Ag__MO_055919219575_001_Ag_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_Dynamo_AlleraRibeiroPerez_2022_FeC__MO_324606345076_000_Fe-C_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_Dynamo_AlleraRibeiroPerez_2022_FeC__MO_324606345076_000_Fe-C_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_Dynamo_AlleraRibeiroPerez_2022_FeC__MO_324606345076_000_Fe-C_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_Dynamo_HaleWongZimmerman_2008PairHybrid_PdAgH__MO_104806802344_006_Pd-Ag-H_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_Dynamo_HaleWongZimmerman_2008PairHybrid_PdAgH__MO_104806802344_006_Pd-Ag-H_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_Dynamo_HaleWongZimmerman_2008PairHybrid_PdAgH__MO_104806802344_006_Pd-Ag-H_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_IMD_BrommerGaehler_2006A_AlNiCo__MO_122703700223_003_Al-Ni-Co_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_IMD_BrommerGaehler_2006A_AlNiCo__MO_122703700223_003_Al-Ni-Co_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_IMD_BrommerGaehler_2006A_AlNiCo__MO_122703700223_003_Al-Ni-Co_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_IMD_BrommerGaehlerMihalkovic_2007_CaCd__MO_145183423516_003_Ca-Cd_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_IMD_BrommerGaehlerMihalkovic_2007_CaCd__MO_145183423516_003_Ca-Cd_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_IMD_BrommerGaehlerMihalkovic_2007_CaCd__MO_145183423516_003_Ca-Cd_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_Magnetic2GQuintic_ChiesaDerletDudarev_2011_Fe__MO_140444321607_002_Fe_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_Magnetic2GQuintic_ChiesaDerletDudarev_2011_Fe__MO_140444321607_002_Fe_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_Magnetic2GQuintic_ChiesaDerletDudarev_2011_Fe__MO_140444321607_002_Fe_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_MagneticCubic_DerletNguyenDudarev_2007_V__MO_683890323730_002_V_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_MagneticCubic_DerletNguyenDudarev_2007_V__MO_683890323730_002_V_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_MagneticCubic_DerletNguyenDudarev_2007_V__MO_683890323730_002_V_cpu_equilibrium_curves.png" width="700">
 
 ## EAM_MagneticCubic_MendelevHanSrolovitz_2003_Fe__MO_856295952425_002_Fe_cpu
-<img src = "plots_equilibrium_config_fcc/EAM_MagneticCubic_MendelevHanSrolovitz_2003_Fe__MO_856295952425_002_Fe_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EAM_MagneticCubic_MendelevHanSrolovitz_2003_Fe__MO_856295952425_002_Fe_cpu_equilibrium_curves.png" width="700">
 
 ## EDIP_BelkoGusakovDorozhkin_2010_Ge__MO_129433059219_001_Ge_cpu
-<img src = "plots_equilibrium_config_fcc/EDIP_BelkoGusakovDorozhkin_2010_Ge__MO_129433059219_001_Ge_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EDIP_BelkoGusakovDorozhkin_2010_Ge__MO_129433059219_001_Ge_cpu_equilibrium_curves.png" width="700">
 
 ## EMT_Asap_Standard_JacobsenStoltzeNorskov_1996_Ag__MO_303974873468_001_Ag_cpu
-<img src = "plots_equilibrium_config_fcc/EMT_Asap_Standard_JacobsenStoltzeNorskov_1996_Ag__MO_303974873468_001_Ag_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/EMT_Asap_Standard_JacobsenStoltzeNorskov_1996_Ag__MO_303974873468_001_Ag_cpu_equilibrium_curves.png" width="700">
 
 ## LJ_ElliottAkerson_2015_Universal__MO_959249795837_003_Si-C_cpu
-<img src = "plots_equilibrium_config_fcc/LJ_ElliottAkerson_2015_Universal__MO_959249795837_003_Si-C_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/LJ_ElliottAkerson_2015_Universal__MO_959249795837_003_Si-C_cpu_equilibrium_curves.png" width="700">
 
 ## LJ_Shifted_Bernardes_1958LowCutoff_Ar__MO_720819638419_004_Ar_cpu
-<img src = "plots_equilibrium_config_fcc/LJ_Shifted_Bernardes_1958LowCutoff_Ar__MO_720819638419_004_Ar_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/LJ_Shifted_Bernardes_1958LowCutoff_Ar__MO_720819638419_004_Ar_cpu_equilibrium_curves.png" width="700">
 
 ## LJ_Shifted_Bernardes_1958MedCutoff_Ar__MO_126566794224_004_Ar_cpu
-<img src = "plots_equilibrium_config_fcc/LJ_Shifted_Bernardes_1958MedCutoff_Ar__MO_126566794224_004_Ar_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/LJ_Shifted_Bernardes_1958MedCutoff_Ar__MO_126566794224_004_Ar_cpu_equilibrium_curves.png" width="700">
 
 ## LJ_Truncated_Nguyen_2005_Ar__MO_398194508715_001_Ar_cpu
-<img src = "plots_equilibrium_config_fcc/LJ_Truncated_Nguyen_2005_Ar__MO_398194508715_001_Ar_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/LJ_Truncated_Nguyen_2005_Ar__MO_398194508715_001_Ar_cpu_equilibrium_curves.png" width="700">
 
 ## MEAM_LAMMPS_HuangDongLiu_2018_Si__MO_050147023220_002_Si_cpu
-<img src = "plots_equilibrium_config_fcc/MEAM_LAMMPS_HuangDongLiu_2018_Si__MO_050147023220_002_Si_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/MEAM_LAMMPS_HuangDongLiu_2018_Si__MO_050147023220_002_Si_cpu_equilibrium_curves.png" width="700">
 
 ## MEAM_LAMMPS_KangEunJun_2014_SiC__MO_477506997611_002_Si-C_cpu
-<img src = "plots_equilibrium_config_fcc/MEAM_LAMMPS_KangEunJun_2014_SiC__MO_477506997611_002_Si-C_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/MEAM_LAMMPS_KangEunJun_2014_SiC__MO_477506997611_002_Si-C_cpu_equilibrium_curves.png" width="700">
 
 ## MEAM_LAMMPS_Lee_2007_Si__MO_774917820956_001_Si_cpu
-<img src = "plots_equilibrium_config_fcc/MEAM_LAMMPS_Lee_2007_Si__MO_774917820956_001_Si_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/MEAM_LAMMPS_Lee_2007_Si__MO_774917820956_001_Si_cpu_equilibrium_curves.png" width="700">
 
 ## MFF_MistriotisFlytzanisFarantos_1989_Si__MO_080526771943_001_Si_cpu
-<img src = "plots_equilibrium_config_fcc/MFF_MistriotisFlytzanisFarantos_1989_Si__MO_080526771943_001_Si_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/MFF_MistriotisFlytzanisFarantos_1989_Si__MO_080526771943_001_Si_cpu_equilibrium_curves.png" width="700">
 
 ## Morse_QuinticSmoothed_Jelinek_1972_Ar__MO_908645784389_002_Ar_cpu
-<img src = "plots_equilibrium_config_fcc/Morse_QuinticSmoothed_Jelinek_1972_Ar__MO_908645784389_002_Ar_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Morse_QuinticSmoothed_Jelinek_1972_Ar__MO_908645784389_002_Ar_cpu_equilibrium_curves.png" width="700">
 
 ## Morse_Shifted_GirifalcoWeizer_1959HighCutoff_Ag__MO_111986436268_004_Ag_cpu
-<img src = "plots_equilibrium_config_fcc/Morse_Shifted_GirifalcoWeizer_1959HighCutoff_Ag__MO_111986436268_004_Ag_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Morse_Shifted_GirifalcoWeizer_1959HighCutoff_Ag__MO_111986436268_004_Ag_cpu_equilibrium_curves.png" width="700">
 
 ## Morse_Shifted_GirifalcoWeizer_1959HighCutoff_Fe__MO_147603128437_004_Fe_cpu
-<img src = "plots_equilibrium_config_fcc/Morse_Shifted_GirifalcoWeizer_1959HighCutoff_Fe__MO_147603128437_004_Fe_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Morse_Shifted_GirifalcoWeizer_1959HighCutoff_Fe__MO_147603128437_004_Fe_cpu_equilibrium_curves.png" width="700">
 
 ## Morse_Shifted_GirifalcoWeizer_1959LowCutoff_Ag__MO_137719994600_004_Ag_cpu
-<img src = "plots_equilibrium_config_fcc/Morse_Shifted_GirifalcoWeizer_1959LowCutoff_Ag__MO_137719994600_004_Ag_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Morse_Shifted_GirifalcoWeizer_1959LowCutoff_Ag__MO_137719994600_004_Ag_cpu_equilibrium_curves.png" width="700">
 
 ## Morse_Shifted_GirifalcoWeizer_1959MedCutoff_Ag__MO_861893969202_004_Ag_cpu
-<img src = "plots_equilibrium_config_fcc/Morse_Shifted_GirifalcoWeizer_1959MedCutoff_Ag__MO_861893969202_004_Ag_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Morse_Shifted_GirifalcoWeizer_1959MedCutoff_Ag__MO_861893969202_004_Ag_cpu_equilibrium_curves.png" width="700">
 
 ## Morse_Shifted_Jelinek_1972_Ar__MO_831902330215_004_Ar_cpu
-<img src = "plots_equilibrium_config_fcc/Morse_Shifted_Jelinek_1972_Ar__MO_831902330215_004_Ar_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Morse_Shifted_Jelinek_1972_Ar__MO_831902330215_004_Ar_cpu_equilibrium_curves.png" width="700">
 
 
 ## SNAP_LiChenZheng_2019_NbTaWMo__MO_560387080449_000_Nb-Ta-W-Mo_cpu
-<img src = "plots_equilibrium_config_fcc/SNAP_LiChenZheng_2019_NbTaWMo__MO_560387080449_000_Nb-Ta-W-Mo_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/SNAP_LiChenZheng_2019_NbTaWMo__MO_560387080449_000_Nb-Ta-W-Mo_cpu_equilibrium_curves.png" width="700">
 
 ## SW_LeeHwang_2012GGA_Si__MO_040570764911_001_Si_cpu
-<img src = "plots_equilibrium_config_fcc/SW_LeeHwang_2012GGA_Si__MO_040570764911_001_Si_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/SW_LeeHwang_2012GGA_Si__MO_040570764911_001_Si_cpu_equilibrium_curves.png" width="700">
 
 ## SW_StillingerWeber_1985_Si__MO_405512056662_006_Si_cpu
-<img src = "plots_equilibrium_config_fcc/SW_StillingerWeber_1985_Si__MO_405512056662_006_Si_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/SW_StillingerWeber_1985_Si__MO_405512056662_006_Si_cpu_equilibrium_curves.png" width="700">
 
 ## SW_WangStroudMarkworth_1989_CdTe__MO_786496821446_001_Cd-Te_cpu
-<img src = "plots_equilibrium_config_fcc/SW_WangStroudMarkworth_1989_CdTe__MO_786496821446_001_Cd-Te_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/SW_WangStroudMarkworth_1989_CdTe__MO_786496821446_001_Cd-Te_cpu_equilibrium_curves.png" width="700">
 
 ## Tersoff_LAMMPS_AlbeNordlundNord_2002_GaAs__MO_799020228312_004_Ga-As_cpu
-<img src = "plots_equilibrium_config_fcc/Tersoff_LAMMPS_AlbeNordlundNord_2002_GaAs__MO_799020228312_004_Ga-As_cpu_equilibrium_curves.png" width="700">
+<img src = "plots_equilibrium_config_fcc_2x2x2_mixed/Tersoff_LAMMPS_AlbeNordlundNord_2002_GaAs__MO_799020228312_004_Ga-As_cpu_equilibrium_curves.png" width="700">
